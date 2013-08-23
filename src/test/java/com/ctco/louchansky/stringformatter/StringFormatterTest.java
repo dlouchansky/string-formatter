@@ -97,30 +97,4 @@ public class StringFormatterTest {
         assertEquals("", s.formatNewlines());
     }
 
-    // NullPointerException tests
-
-    @Test(expected = NullPointerException.class)
-    public void testGetStringIfNoStringAssigned() throws Exception {
-        StringFormatter s = new StringFormatter();
-        s.getString();
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testFormatNewlinesIfNoStringAssigned() throws Exception {
-        StringFormatter s = new StringFormatter();
-        s.formatNewlines();
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testReverseNoStringAssigned() throws Exception {
-        StringFormatter s = new StringFormatter();
-        s.reverse();
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testGetStringCharsIfNoStringAssigned() throws Exception {
-        StringFormatter s = new StringFormatter();
-        s.getStringChars();
-    }
-
 }

@@ -5,10 +5,11 @@ import java.util.Stack;
 public class NewlineStack<Character> extends Stack<Character> {
 
     public String toString() {
-
+        NewlineStack<Character> out = new NewlineStack<Character>();
+        out.addAll(this);
         String result = "";
-        while (!this.isEmpty()) {
-            result += this.pop();
+        while (!out.isEmpty()) {
+            result += out.pop();
         }
         return result;
 
