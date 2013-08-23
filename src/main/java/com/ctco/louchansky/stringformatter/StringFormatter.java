@@ -52,7 +52,9 @@ public class StringFormatter {
             }
         }
 
-        return resultStack.toString();
+        data = resultStack.toString();
+
+        return data;
     }
 
 }
