@@ -12,7 +12,8 @@ public class StringFormatter {
     }
 
     public String reverse() {
-        return new StringBuffer(data).reverse().toString();
+        data = new StringBuilder(data).reverse().toString();
+        return data;
     }
 
     public String getString() {

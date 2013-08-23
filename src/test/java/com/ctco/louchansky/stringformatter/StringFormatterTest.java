@@ -9,7 +9,7 @@ public class StringFormatterTest {
     @Test
     public void testFormatNewlinesEmptyString() throws Exception {
         StringFormatter s = new StringFormatter("");
-        assertEquals(s.formatNewlines(), "");
+        assertEquals("", s.formatNewlines());
     }
 
     @Test

@@ -8,4 +8,5 @@ public class NewlineLinkedList<Character> extends LinkedList<Character> {
         if (this.size() > 1 && this.getLast().equals('\n'))
             this.clear();
     }
+
 }

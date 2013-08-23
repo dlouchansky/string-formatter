@@ -7,12 +7,11 @@ public class NewlineStack<Character> extends Stack<Character> {
     public String toString() {
         NewlineStack<Character> out = new NewlineStack<Character>();
         out.addAll(this);
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while (!out.isEmpty()) {
-            result += out.pop();
+            result.append(out.pop());
         }
-        return result;
-
+        return result.toString();
     }
 
     public void addAllIfNotEmptyAndClear(NewlineLinkedList<Character> tempStorage) {
