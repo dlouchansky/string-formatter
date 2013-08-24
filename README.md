@@ -1,17 +1,17 @@
-String sanitizer. One of C.T.Co Java school projects.
-
-It removes newline character preceding n backslash characters. No regexp.
+### Strinп processor
+One of C.T.Co Java school projects.
+It removes newline character preceded by n>=1 backslash characters. No regexp.
 
 Examples:
 
-In: "abc\\\\\ndef"
-Out: "abcdef"
+1.  In: "abc\\\\\ndef"
+    Out: "abcdef"
 
-In: "abc\\\\\\\\\ndef"
-Out: "abcdef"
+2.  In: "abc\\\\\\\\\ndef"
+    Out: "abcdef"
 
-In: "abc\ndef"
-Out: "abc\ndef"
+3.  In: "abc\ndef"
+    Out: "abc\ndef"
 
-In: "abc\\\\def"
-Out: "abc\\\\def"
+4.  In: "abc\\\\def"
+    Out: "abc\\\\def"
