@@ -1,4 +1,4 @@
-### Strinп processor
+### String processor
 One of C.T.Co Java school projects.  
 It removes newline character preceded by n>=1 backslash characters. No regexp.
 
