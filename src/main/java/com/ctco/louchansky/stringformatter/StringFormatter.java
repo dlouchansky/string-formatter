@@ -5,35 +5,24 @@ import com.ctco.louchansky.stringformatter.structures.NewlineStack;
 
 public class StringFormatter {
 
-    private String data;
-
-    public StringFormatter(String _data) {
-        data = _data;
+    public String reverse(String data) {
+        return new StringBuilder(data).reverse().toString();
     }
 
-    public String reverse() {
-        data = new StringBuilder(data).reverse().toString();
-        return data;
-    }
-
-    public String getString() {
-        return data;
-    }
-
-    public char[] getStringChars() {
+    public char[] getStringChars(String data) {
         return data.toCharArray();
     }
 
-    public String formatNewlines() {
+    public String formatNewlines(String data) {
         if (!data.contains("\\\n"))
             return data;
 
-        data = this.reverse();
+        data = this.reverse(data);
 
         NewlineStack<Character> resultStack = new NewlineStack<Character>();
         NewlineLinkedList<Character> tempStorage = new NewlineLinkedList<Character>();
 
-        for (Character c : this.getStringChars()) {
+        for (Character c : this.getStringChars(data)) {
 
             if (c == '\\') {
 
@@ -41,12 +30,12 @@ public class StringFormatter {
 
             } else if (c == '\n') {
 
-                resultStack.addAllIfNotEmptyAndClear(tempStorage);
+                resultStack.addAll(tempStorage.getAllAndClear());
                 tempStorage.push(c);
 
             } else {
 
-                resultStack.addAllIfNotEmptyAndClear(tempStorage);
+                resultStack.addAll(tempStorage.getAllAndClear());
                 resultStack.push(c);
 
             }

@@ -8,93 +8,86 @@ public class StringFormatterTest {
 
     @Test
     public void testFormatNewlinesEmptyString() throws Exception {
-        StringFormatter s = new StringFormatter("");
-        assertEquals("", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("", s.formatNewlines(""));
     }
 
     @Test
     public void testFormatNewlinesNothingToFormat() throws Exception {
-        StringFormatter s = new StringFormatter("abcdef");
-        assertEquals("abcdef", s.formatNewlines());
-    }
-
-    @Test
-    public void testFormatNewlinesRemoveTwoNewlines() throws Exception {
-        StringFormatter s = new StringFormatter("ab\\\ncd\\\nef");
-        assertEquals("abcdef", s.formatNewlines());
-    }
-
-    @Test
-    public void testFormatNewlinesRemoveTwoNearNewlines() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\n\\\ndef");
-        assertEquals("abcdef", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("abcdef", s.formatNewlines("abcdef"));
     }
 
     @Test
     public void testFormatNewlinesRemoveOneNewline() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\ndef");
-        assertEquals("abcdef", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("abcdef", s.formatNewlines("abc\\\ndef"));
+    }
+
+    @Test
+    public void testFormatNewlinesRemoveMultipleNewlines() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("abcdef", s.formatNewlines("ab\\\ncd\\\nef\\\n"));
+    }
+
+    @Test
+    public void testFormatNewlinesRemoveTwoNearNewlines() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("abcdef", s.formatNewlines("abc\\\n\\\ndef"));
     }
 
     @Test
     public void testFormatNewlinesWrongOrder() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\n\\\\def");
-        assertEquals("abc\\n\\\\def", s.formatNewlines());
-    }
-
-    @Test
-    public void testFormatNewlinesNoNCharacter() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\\def");
-        assertEquals("abc\\\\def", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("abc\\n\\\\def", s.formatNewlines("abc\\n\\\\def"));
     }
 
     @Test
     public void testFormatNewlinesWrongBackslashCount() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\ndef");
-        assertEquals("abc\\ndef", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("abc\\ndef", s.formatNewlines("abc\\ndef"));
     }
 
     @Test
     public void testFormatNewlinesRightAndWrongNotNear() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\nd\\nef");
-        assertEquals("abcd\\nef", s.formatNewlines());
+        StringFormatter s = new StringFormatter();
+        assertEquals("abcd\\nef", s.formatNewlines("abc\\\nd\\nef"));
     }
 
     @Test
     public void testReverseString() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\ndef");
-        s.reverse();
-        assertEquals("fedn\\cba", s.getString());
+        StringFormatter s = new StringFormatter();
+        assertEquals("fedn\\cba", s.reverse("abc\\ndef"));
     }
 
     @Test
-    public void testFormatNewlinesRightAndWrongNear() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\n\\\n\\ef");
-        assertEquals("abc\\ef", s.formatNewlines());
+    public void testFormatNewlinesIfCorrectAndWrongNear() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("abc\\ef", s.formatNewlines("abc\\\n\\\n\\ef"));
     }
 
     @Test
-    public void testFormatNewlinesTwoNewlinesNear() throws Exception {
-        StringFormatter s = new StringFormatter("abc\\\n\nef");
-        assertEquals("abc\nef", s.formatNewlines());
+    public void testFormatNewlinesIfTwoNewlinesAreNear() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("abc\nef", s.formatNewlines("abc\\\n\nef"));
     }
 
     @Test
-    public void testFormatNewlinesAllBackslashes() throws Exception {
-        StringFormatter s = new StringFormatter("\\\\\\");
-        assertEquals("\\\\\\", s.formatNewlines());
+    public void testFormatNewlinesStringContainsOnlyBackslashes() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("\\\\\\", s.formatNewlines("\\\\\\"));
     }
 
     @Test
-    public void testFormatNewlinesAllNewlines() throws Exception {
-        StringFormatter s = new StringFormatter("\n\n");
-        assertEquals("\n\n", s.formatNewlines());
+    public void testFormatNewlinesStringContainsOnlyNewlines() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("\n\n", s.formatNewlines("\n\n"));
     }
 
     @Test
-    public void testFormatNewlinesOnlyBackslashNewline() throws Exception {
-        StringFormatter s = new StringFormatter("\\\n\\\n");
-        assertEquals("", s.formatNewlines());
+    public void testFormatNewlinesStringContainsOnlyFormattedSymbols() throws Exception {
+        StringFormatter s = new StringFormatter();
+        assertEquals("", s.formatNewlines("\\\n\\\n"));
     }
 
 }
